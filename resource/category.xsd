@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.epam.com/category"
+        xmlns:cat="http://www.epam.com/category"
+        xmlns:food="http://www.epam.com/food"
+        attributeFormDefault="qualified"
+        elementFormDefault="qualified">
+
+    <import schemaLocation="food.xsd" namespace="http://www.epam.com/food"/>
+
+   <element name="category" type="cat:Category"/>
+
+    <complexType name="Category">
+        <sequence>
+            <element name="food" type="food:Food" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="id" type="positiveInteger"/>
+        <attribute name="name" type="cat:categoryName"/>
+    </complexType>
+
+    <simpleType name="categoryName">
+        <restriction base="string">
+            <enumeration value="ХОЛОДНЫЕ ЗАКУСКИ"/>
+            <enumeration value="ГОРЯЧИЕ ЗАКУСКИ"/>
+            <enumeration value="ЗАВТРАКИ"/>
+            <enumeration value="САЛАТЫ"/>
+            <enumeration value="СУПЫ"/>
+            <enumeration value="РЫБНЫЕ БЛЮДА"/>
+            <enumeration value="МЯСНЫЕ БЛЯДА"/>
+            <enumeration value="ГАРНИРЫ"/>
+            <enumeration value="БЛЮДА НА МАНГАЛЕ"/>
+            <enumeration value="ОТ ШЕФА ПОВАРА"/>
+            <enumeration value="Приложение"/>
+            <enumeration value="ДЕСЕРТ"/>
+        </restriction>
+    </simpleType>
+</schema>
