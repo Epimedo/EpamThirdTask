@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<cat:category cat:id="3" cat:name="ЗАВТРАКИ"
+              xmlns:cat="http://www.epam.com/category"
+              xmlns:fd="http://www.epam.com/food">
+
+    <cat:food fd:foodId="1" fd:name="Глазунья" fd:portion="150" fd:price="">
+        <fd:imagine>href</fd:imagine>
+        <fd:ingredient>2 яйца</fd:ingredient>
+        <fd:ingredientsForChoose>
+            <fd:ingredientForChoose>
+                <fd:ingrName>ветчина</fd:ingrName>
+                <fd:priceWithIngr></fd:priceWithIngr>
+            </fd:ingredientForChoose>
+            <fd:ingredientForChoose>
+                <fd:ingrName>сыр</fd:ingrName>
+                <fd:priceWithIngr></fd:priceWithIngr>
+            </fd:ingredientForChoose>
+            <fd:ingredientForChoose>
+                <fd:ingrName>помидоры</fd:ingrName>
+                <fd:priceWithIngr></fd:priceWithIngr>
+            </fd:ingredientForChoose>
+        </fd:ingredientsForChoose>
+    </cat:food>
+
+    <cat:food fd:foodId="2" fd:name="Омлет" fd:portion="100" fd:price="">
+        <fd:imagine>href</fd:imagine>
+    </cat:food>
+
+    <cat:food fd:foodId="3" fd:name="Блинчики с мясом" fd:portion="150" fd:price="">
+        <fd:imagine>href</fd:imagine>
+        <fd:ingredient>Жаренные блинчики с мясом</fd:ingredient>
+    </cat:food>
+
+</cat:category>
