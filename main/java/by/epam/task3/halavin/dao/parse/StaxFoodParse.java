@@ -2,6 +2,7 @@ package by.epam.task3.halavin.dao.parse;
 
 import by.epam.task3.halavin.dao.exception.DAOEception;
 import by.epam.task3.halavin.dao.tags.FoodTags;
+import by.epam.task3.halavin.dao.tags.HandlerFoodTags;
 import by.epam.task3.halavin.entity.Food;
 import by.epam.task3.halavin.entity.builder.FoodBuilder;
 import by.epam.task3.halavin.service.ServiceFactory;
@@ -56,11 +57,13 @@ public class StaxFoodParse implements Parserable<Food> {
 
     private void initFood(XMLStreamReader reader) {
         foodBuilder = ServiceFactory.getInstance().createFoodBuilder();
-        foodBuilder.setId(Integer.parseInt(reader.getAttributeValue(null, "foodId")))
-                .setName(reader.getAttributeValue(null, "name"))
-                .setPortion(reader.getAttributeValue(null, "portion"));
-        if (!reader.getAttributeValue(null, "price").isEmpty()) {
-            foodBuilder.setPrice(Double.parseDouble(reader.getAttributeValue(null, "price")));
+        foodBuilder.setId(Integer.parseInt(reader.getAttributeValue(null, HandlerFoodTags
+                .ATTR_ID.getStr())))
+                .setName(reader.getAttributeValue(null, HandlerFoodTags.ATTR_NAME.getStr()))
+                .setPortion(reader.getAttributeValue(null, HandlerFoodTags.ATTR_PORTION.getStr()));
+        if (!reader.getAttributeValue(null, HandlerFoodTags.ATTR_PRICE.getStr()).isEmpty()) {
+            foodBuilder.setPrice(Double.parseDouble(reader.getAttributeValue(null, HandlerFoodTags
+                    .ATTR_PRICE.getStr())));
         }
     }
 

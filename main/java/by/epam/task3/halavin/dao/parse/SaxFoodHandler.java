@@ -1,6 +1,7 @@
 package by.epam.task3.halavin.dao.parse;
 
 import by.epam.task3.halavin.dao.tags.FoodTags;
+import by.epam.task3.halavin.dao.tags.HandlerFoodTags;
 import by.epam.task3.halavin.entity.Food;
 import by.epam.task3.halavin.entity.builder.FoodBuilder;
 import by.epam.task3.halavin.service.ServiceFactory;
@@ -34,7 +35,7 @@ public class SaxFoodHandler extends DefaultHandler {
 
     @Override
     public void startPrefixMapping(String prefix, String uri) throws SAXException {
-        this.prefix = prefix;
+        this.prefix = prefix + ":";
     }
 
     @Override
@@ -101,11 +102,12 @@ public class SaxFoodHandler extends DefaultHandler {
     public void initFood(Attributes attributes) {
         foodBuilder = ServiceFactory.getInstance().createFoodBuilder();
 
-        foodBuilder.setId(Integer.parseInt(attributes.getValue(prefix + ":foodId")))
-                .setName(attributes.getValue(prefix + ":name"))
-                .setPortion(attributes.getValue(prefix + ":portion"));
-        if (!attributes.getValue(prefix + ":price").isEmpty()) {
-            foodBuilder.setPrice(Double.parseDouble(attributes.getValue(prefix + ":price")));
+        foodBuilder.setId(Integer.parseInt(attributes.getValue(prefix + HandlerFoodTags.ATTR_ID.getStr())))
+                .setName(attributes.getValue(prefix + HandlerFoodTags.ATTR_NAME.getStr()))
+                .setPortion(attributes.getValue(prefix + HandlerFoodTags.ATTR_PORTION.getStr()));
+        if (!attributes.getValue(prefix + HandlerFoodTags.ATTR_PRICE.getStr()).isEmpty()) {
+            foodBuilder.setPrice(Double.parseDouble(attributes.getValue(prefix + HandlerFoodTags.ATTR_PRICE
+                    .getStr())));
         }
     }
 }

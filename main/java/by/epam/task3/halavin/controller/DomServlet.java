@@ -2,6 +2,7 @@ package by.epam.task3.halavin.controller;
 
 import by.epam.task3.halavin.controller.command.CommandNames;
 import by.epam.task3.halavin.controller.command.CommandProvider;
+import by.epam.task3.halavin.util.Resources;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,19 +18,19 @@ public class DomServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CommandProvider.getInstance().execute(CommandNames.valueOf(req.getParameter("command"))
-                + " " + req.getParameter("category"), req, resp);
+        CommandProvider.getInstance().execute(CommandNames.valueOf(req.getParameter(Resources.COMMAND
+                .getStr())) + " " + req.getParameter(Resources.CATEGORY.getStr()),req,resp);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/view/domMenu.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(Resources.DOM_MENU.getStr());
         requestDispatcher.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CommandProvider.getInstance().execute(CommandNames.valueOf(req.getParameter("command")) + " " +
-                req.getParameter("category"), req, resp);
+        CommandProvider.getInstance().execute(CommandNames.valueOf(req.getParameter(Resources.COMMAND
+                .getStr())) + " " + req.getParameter(Resources.CATEGORY.getStr()),req,resp);
 
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/view/domMenu.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher(Resources.DOM_MENU.getStr());
         requestDispatcher.forward(req, resp);
     }
 }
